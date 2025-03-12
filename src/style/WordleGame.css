@@ -1,0 +1,99 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* תיבת התצוגה של המילה */
+  .word-display {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  /* ברירת מחדל - גבול רגיל */
+  .cell {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ccc;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    color: black;
+    text-transform: uppercase;
+    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* אם המילה נכונה - ירוק */
+  .word-display.correct .cell {
+    border: 3px solid #4caf50;
+    background-color: #c8e6c9;
+  }
+  
+  /* אם המילה שגויה - אדום */
+  .word-display.incorrect .cell {
+    border: 3px solid #ff4d4d;
+    background-color: #ffcccc;
+  }
+  
+  /* מקלדת */
+  .keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .keyboard-row {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .key {
+    width: 40px;
+    height: 50px;
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .key:hover {
+    background-color: #a9a9a9;
+  }
+  
+  /* התאמת כפתורי Enter ו-Backspace */
+  .enter {
+    width: 80px;
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .enter:hover {
+    background-color: #388e3c;
+  }
+  
+  .backspace {
+    width: 80px;
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .backspace:hover {
+    background-color: #cc0000;
+  }
+  

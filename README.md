@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# React Wordle Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project is a Wordle-like game built using **React**, **TypeScript**, and **CSS**. The game allows users to input a word, check if it's valid using a dictionary, and provides visual feedback based on whether the word exists or not. The UI structure is inspired by the classic Wordle game interface.
 
-## Available Scripts
+## Features
+- **Word Entry:** Click on the alphabet keys to fill in word squares.
+- **Backspace:** Remove the last character entered.
+- **Enter Validation:** Validate the entered word against an English dictionary.
+- **Visual Feedback:** Green border for correct words, red border for incorrect words or incomplete words.
 
-In the project directory, you can run:
+## Project Structure
 
-### `npm start`
+The project consists of two main parts:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Part 1: ActionListener Class
+The `MyActionListener` class is designed to manage actions in a listener-based system. It allows registering listeners for specific actions, emitting those actions with data, and removing listeners when no longer needed.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Methods:
+1. **registerListener(action: string, listener: Function):** Registers a listener for a specific action. If the action already exists, the new listener will be added to the list.
+2. **removeListener(action: string):** Removes all listeners associated with the given action.
+3. **emit(action: string, data: any):** Emits the specified action with the provided data. If no listeners are registered for the action, an exception is thrown.
 
-### `npm test`
+### Example Usage:
+```typescript
+// Creating an instance of MyActionListener
+const actionListener = new MyActionListener();
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// Registering listeners for the "PRINT" action
+actionListener.registerListener("PRINT", (data) =>
+  console.log(`Don't tell me what I ${data} or ${data}'t do`)
+);
+actionListener.registerListener("PRINT", (data) =>
+  console.log(`I eat pickles right off the ${data}`)
+);
 
-### `npm run build`
+// Emitting the "PRINT" action
+actionListener.emit("PRINT", "Can");
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// Removing listeners for the "PRINT" action
+actionListener.removeListener("PRINT");
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+// Emitting an unregistered action (will throw error)
+actionListener.emit("PRINT", "Can");
